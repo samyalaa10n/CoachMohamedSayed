@@ -4,7 +4,7 @@
       facebook: "https://facebook.com/",   // placeholder
       instagram: "https://instagram.com/", // placeholder
       gym: { name: "Gym H2O", url: "https://example.com/" }, // placeholder
-      images: { coach: "/images/Background.png" },                  // e.g. "images/coach.jpg"
+      images: { coach: "images/Background.png" },                  // e.g. "images/coach.jpg"
       stats: [ // placeholders – change n, suffix and labels
         { n: 500, s: "+", ar: "عملاء", en: "Clients" }, { n: 10, s: "K+", ar: "زوار الموقع", en: "Website Visitors" },
         { n: 300, s: "+", ar: "متدربين", en: "Trainees" }, { n: 7, s: "+", ar: "سنوات خبرة", en: "Years Experience" }, { n: 6, s: "", ar: "بطولات دولية", en: "Competitions" }],
