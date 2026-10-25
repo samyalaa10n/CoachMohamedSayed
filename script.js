@@ -104,25 +104,32 @@ const CFG = {
   clients: [
     // add real entries: {name,goal,duration,before:"img",after:"img"} (ar/en text per field)
     {
-      name: ["اسم المتدرب", "Client Name"],
+      name: ["محمد", "mohamed"],
       goal: ["الهدف", "Goal"],
-      dur: ["مدة التدريب", "Training Duration"],
-      before: "",
-      after: "",
+      dur: ["3 شهور", "3 Month"],
+      before: "images/Clints/C_1_1.jpeg",
+      after: "images/Clints/C_1_2.jpeg",
     },
     {
-      name: ["اسم المتدرب", "Client Name"],
+      name: ["اسلام", "islam"],
       goal: ["الهدف", "Goal"],
-      dur: ["مدة التدريب", "Training Duration"],
-      before: "",
-      after: "",
+      dur: ["3 شهور", "3 Month"],
+      before: "images/Clints/C_2_1.jpg",
+      after: "images/Clints/C_2_2.jpg",
     },
     {
-      name: ["اسم المتدرب", "Client Name"],
+      name: ["احمد", "ahmed"],
       goal: ["الهدف", "Goal"],
       dur: ["مدة التدريب", "Training Duration"],
-      before: "",
-      after: "",
+      before: "images/Clints/C_3_1.jpg",
+      after: "images/Clints/C_3_2.jpg",
+    },
+    {
+      name: ["منصور", "mansor"],
+      goal: ["الهدف", "Goal"],
+      dur: ["مدة التدريب", "Training Duration"],
+      before: "images/Clints/C_4_1.jpg",
+      after: "images/Clints/C_4_2.jpg",
     },
   ],
 };
@@ -212,7 +219,7 @@ const SV_ = [
 ];
 $("#svc").innerHTML = SV_.map(
   (s) =>
-    `<div class="card rv"><div class="ic">${s[0]}</div><h3 ${E(s[1], s[2])}></h3><p ${E(s[3], s[4])}></p><a href="#subscribe" class="btn" style="margin-top:18px;min-height:44px" data-pick="${s[5]}" ${E("اختر هذه الخدمة", "Choose This Service")}></a></div>`,
+    `<div class="card rv"><div class="ic">${s[0]}</div><h3 ${E(s[1], s[2])}></h3><p ${E(s[3], s[4])}></p></div>`,
 ).join("");
 const CC = (c) =>
   `<div class="card rv"><div class="ba">${ph(c.before, "Before")}${ph(c.after, "After")}</div><div class="meta"><b ${E(c.name[0], c.name[1])}></b><br><span ${E(c.goal[0], c.goal[1])}></span> · <span ${E(c.dur[0], c.dur[1])}></span></div></div>`;
@@ -320,7 +327,7 @@ document.addEventListener("click", (e) => {
   const a = e.target.closest("[data-pick]");
   if (a) {
     plan = a.dataset.pick;
-    
+
     showSel();
   }
   const h = e.target.closest(".links a");
