@@ -7,6 +7,7 @@ const MUSIC = {
   src: "audio/intro.mp3", // path to your song (put the file in an "audio" folder)
   volume: 0.4,           // 0 → 1
   loop: true,
+  splash: true,          // welcome screen with an "Enter" button (the click starts the music)
 };
 /* ============================================================= */
 
@@ -85,7 +86,7 @@ const MUSIC = {
      1) try with sound; 2) if blocked, start MUTED (allowed) and switch the sound on
      at the first REAL gesture. Only click / touchend / pointerup / keydown count on
      phones (touchstart / pointerdown / scroll do not), and we keep listening until it works. */
-  if (!muted) {
+  if (!muted && !MUSIC.splash) {
     a.play().then(ui).catch(() => {
       locked = true;
       a.muted = true;
@@ -98,6 +99,55 @@ const MUSIC = {
       evs.forEach((n) => addEventListener(n, go, { passive: true }));
       ui();
     });
+  }
+
+  /* ---- welcome screen: the "Enter" click is the gesture that starts the music ---- */
+  if (MUSIC.splash) {
+    const css = document.createElement("style");
+    css.textContent = `
+    #spl{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:24px;text-align:center;background:radial-gradient(700px 420px at 50% 35%,rgba(255,77,28,.22),transparent 65%),#0a0a0b;transition:opacity .6s,transform .6s,visibility .6s}
+    #spl.x{opacity:0;visibility:hidden;transform:scale(1.06)}
+    #spl .sp-i{max-width:420px;animation:spin .8s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes spin{from{opacity:0;transform:translateY(24px)}}
+    #spl .sp-l{width:150px;height:auto;margin:0 auto 18px;display:block}
+    #spl .sp-n{font-weight:800;font-size:1.6rem;line-height:1.2}
+    #spl .sp-e{color:var(--mut);letter-spacing:.14em;font-size:.8rem;text-transform:uppercase;margin:4px 0}
+    #spl .sp-t{color:var(--mut);margin:20px 0 24px;font-size:.95rem;line-height:1.8}
+    #spl .sp-go{width:100%;animation:spg 2.2s ease-in-out infinite}
+    @keyframes spg{50%{box-shadow:0 0 0 10px rgba(255,77,28,.16),0 8px 30px rgba(255,77,28,.45)}}
+    #spl .sp-no{background:none;border:0;color:var(--mut);margin-top:16px;padding:10px;font:inherit;font-size:.88rem;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+    #spl .sp-no:hover{color:var(--tx)}`;
+    document.head.appendChild(css);
+
+    const sp = document.createElement("div");
+    sp.id = "spl";
+    sp.setAttribute("role", "dialog");
+    sp.setAttribute("aria-label", "Welcome");
+    sp.innerHTML = `<div class="sp-i">
+      <svg class="sp-l" viewBox="0 0 235 120" aria-hidden="true"><polygon fill="#f5f5f4" points="10,110 10,10 34,10 60,62 86,10 110,10 110,110 88,110 88,48 66,92 54,92 32,48 32,110"/><path d="M210 21H150L136 35V46L150 60H198L212 74V85L198 99H136" fill="none" stroke="#ff4d1c" stroke-width="22"/></svg>
+      <div class="sp-n">كابتن محمد سيد</div>
+      <div class="sp-e">Coach Mohamed Sayed</div>
+      <button type="button" class="btn pri sp-go">لنبدأ</button><br>
+    </div>`;
+    document.body.appendChild(sp);
+    document.documentElement.style.overflow = "hidden";
+
+    const esc = (e) => { if (e.key === "Escape") enter(false); };
+    function enter(withSound) {
+      muted = !withSound;
+      store.set(muted);
+      a.muted = muted;
+      if (withSound) play(); // runs inside the click = allowed on every browser
+      document.removeEventListener("keydown", esc);
+      document.documentElement.style.overflow = "";
+      sp.classList.add("x");
+      setTimeout(() => sp.remove(), 700);
+      ui();
+    }
+    sp.querySelector(".sp-go").addEventListener("click", () => enter(true));
+    sp.querySelector(".sp-no").addEventListener("click", () => enter(false));
+    document.addEventListener("keydown", esc);
+    sp.querySelector(".sp-go").focus({ preventScroll: true });
   }
 
   /* pause when the tab is hidden, resume when back */
