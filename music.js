@@ -125,9 +125,9 @@ const MUSIC = {
     sp.setAttribute("aria-label", "Welcome");
     sp.innerHTML = `<div class="sp-i">
       <svg class="sp-l" viewBox="0 0 235 120" aria-hidden="true"><polygon fill="#f5f5f4" points="10,110 10,10 34,10 60,62 86,10 110,10 110,110 88,110 88,48 66,92 54,92 32,48 32,110"/><path d="M210 21H150L136 35V46L150 60H198L212 74V85L198 99H136" fill="none" stroke="#ff4d1c" stroke-width="22"/></svg>
-      <div class="sp-n">كابتن محمد سيد</div>
-      <div class="sp-e">Coach Mohamed Sayed</div>
-      <button type="button" class="btn pri sp-go">لنبدأ</button><br>
+      <div class="sp-n">Coach Mohamed Sayed</div>
+      <div class="sp-e">Online Fitness Coaching</div>
+      <button type="button" class="btn pri sp-go">Let’s Start</button>
     </div>`;
     document.body.appendChild(sp);
     document.documentElement.style.overflow = "hidden";

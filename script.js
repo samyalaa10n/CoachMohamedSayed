@@ -145,7 +145,7 @@ const SV = {
 const wa = (t) =>
   `https://wa.me/${CFG.whatsapp}${t ? "?text=" + encodeURIComponent(t) : ""}`;
 const E = (a, b) => `data-ar="${a}" data-en="${b}"`;
-let L = "ar",
+let L = "en",
   plan = "";
 const ph = (img, label) =>
   `<div class="ph lb" data-ph="${label}">${img ? `<img src="${img}" alt="${label}" loading="lazy">` : label}</div>`;
@@ -459,7 +459,7 @@ $$(".rv").forEach((e, i) => {
   e.style.transitionDelay = (i % 3) * 90 + "ms";
   io.observe(e);
 });
-setLang("ar");
+setLang("en");
 function route() {
   const h = location.hash.slice(1),
     t = h === "transformations";
