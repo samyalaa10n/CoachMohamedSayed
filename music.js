@@ -64,10 +64,12 @@ const MUSIC = {
 
   function play() { return a.play().then(ui).catch(ui); }
 
-  function unlock() { // first user gesture: turn the sound on
-    locked = false;
-    if (!muted) { a.muted = false; if (a.paused) play(); }
-    ui();
+  a.addEventListener("error", () => console.error("music.js: cannot load the audio file ->", MUSIC.src));
+
+  function unlock() { // called from a real user gesture: turn the sound on
+    if (muted) { locked = false; ui(); return Promise.resolve(); }
+    a.muted = false;
+    return a.play().then(() => { locked = false; ui(); }).catch(() => { a.muted = true; ui(); }); // not allowed yet: keep waiting
   }
 
   b.addEventListener("click", () => {
@@ -80,18 +82,18 @@ const MUSIC = {
   });
 
   /* ---- autoplay ----
-     1) try with sound; 2) if blocked, start MUTED (browsers allow that)
-     and switch the sound on at the first tap/click/key anywhere on the page. */
+     1) try with sound; 2) if blocked, start MUTED (allowed) and switch the sound on
+     at the first REAL gesture. Only click / touchend / pointerup / keydown count on
+     phones (touchstart / pointerdown / scroll do not), and we keep listening until it works. */
   if (!muted) {
     a.play().then(ui).catch(() => {
       locked = true;
       a.muted = true;
       a.play().then(ui).catch(ui);
-      const evs = ["pointerdown", "keydown", "touchend"];
+      const evs = ["click", "touchend", "pointerup", "keydown"];
       const go = (e) => {
         if (e.target && e.target.closest && e.target.closest("#mus")) return; // the button handles itself
-        evs.forEach((n) => removeEventListener(n, go));
-        unlock();
+        unlock().then(() => { if (!locked) evs.forEach((n) => removeEventListener(n, go)); });
       };
       evs.forEach((n) => addEventListener(n, go, { passive: true }));
       ui();
@@ -101,7 +103,7 @@ const MUSIC = {
   /* pause when the tab is hidden, resume when back */
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) a.pause();
-    else if (!muted && a.currentTime > 0) play();
+    else if (!muted && !locked && a.currentTime > 0) play();
   });
 
   ui();
