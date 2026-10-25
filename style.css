@@ -395,7 +395,7 @@
      opacity      : .28;
      background   : var(--ac);
      will-change  : transform;
-     animation    : fl 14s ease-in-out infinite
+    
  }
 
  .bl:nth-child(2) {
