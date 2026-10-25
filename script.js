@@ -63,7 +63,7 @@ const CFG = {
       de: "Accredited training certification.",
     },
     {
-      img: "",
+      img: "images/Certifications/ISSA.jpeg",
       ar: "CPT – ISSA",
       en: "CPT – ISSA",
       da: "شهادة مدرب شخصي (CPT) من ISSA.",
