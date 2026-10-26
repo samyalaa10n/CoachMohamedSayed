@@ -172,21 +172,16 @@ function flip(c, change) {
 }
 const mob = matchMedia("(max-width:900px)");
 function focusCard(c, open) {
-  // after the layout settles, scroll to the prices (phones) / center the card (desktop)
+  // after the layout settles, scroll to the top of the card (phones) / center it (desktop)
   if (!mob.matches) {
     c.scrollIntoView({ block: "center", behavior: "smooth" });
     return;
   }
   setTimeout(
     () => {
-      const t = open
-        ? c.querySelector(".dh")
-        : document.getElementById("pricing");
+      const t = open ? c : document.getElementById("pricing");
       scrollTo({
-        top: Math.max(
-          0,
-          t.getBoundingClientRect().top + scrollY - (open ? 110 : 80),
-        ),
+        top: Math.max(0, t.getBoundingClientRect().top + scrollY - 80),
         behavior: "smooth",
       });
     },
