@@ -3,6 +3,25 @@
    Plans → animated selection → duration → summary → form → WhatsApp
    ===================================================================== */
 
+   /*
+   الاساسيه :
+٣ شهور١٥٠٠ج
+٦ شهور٣٠٠٠ج
+٩شهور٤٥٠٠ج
+١٢ شهر٦٠٠٠ج
+القياسيه :
+٣ شهور ٢٥٠٠ج
+٦ شهور٤٠٠٠ج
+٩ شهور٥٥٠٠ج
+١٢ شهر٧٠٠٠ج
+المميزه :
+٣شهور٤٠٠٠ج
+٦ شهور٦٥٠٠ج
+٩ شهور٨٠٠٠ج
+١٢ شهر٩٥٠٠ج
+   
+   */
+
 /* ============ PRICING CONFIG — edit only this block ============
    prices: put a number (e.g. 3: 1500). null = shows "Price TBA".
    currency: shown after every price.                              */
@@ -16,7 +35,7 @@ CFG.plans = [
     pop: false,
     da: "خطة واضحة ومتابعة أساسية للبداية.",
     de: "A clear plan with basic follow-up to get started.",
-    prices: { 3: null, 6: null, 9: null, 12: null },
+    prices: { 3: 1500, 6: 3000, 9: 4500, 12: 6000 },
     f: [
       ["خطة تدريب مخصصة", "Customized workout plan"],
       ["متابعة أساسية", "Basic follow-up"],
@@ -30,7 +49,7 @@ CFG.plans = [
     pop: true,
     da: "خطة مخصصة مع متابعة منتظمة وتتبّع للتقدم.",
     de: "A customized plan with regular follow-up and progress tracking.",
-    prices: { 3: null, 6: null, 9: null,12: null },
+    prices: { 3: 2500, 6: 4000, 9: 5500,12: 7000 },
     f: [
       ["خطة تدريب مخصصة", "Customized workout plan"],
       ["متابعة منتظمة", "Regular follow-up"],
@@ -45,7 +64,7 @@ CFG.plans = [
     pop: false,
     da: "تدريب مخصص بالكامل مع تواصل مباشر مع الكابتن.",
     de: "Fully personalized coaching with direct coach communication.",
-    prices: { 3: 10000, 6: 14000, 9: 20000,12: 25000 },
+    prices: { 3: 4000, 6: 6500, 9: 8000,12: 9500 },
     f: [
       ["تدريب مخصص بالكامل", "Fully personalized coaching"],
       ["خطة تدريب", "Training plan"],
