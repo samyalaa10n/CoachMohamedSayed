@@ -3,7 +3,7 @@
    Plans → animated selection → duration → summary → form → WhatsApp
    ===================================================================== */
 
-   /*
+/*
    الاساسيه :
 ٣ شهور١٥٠٠ج
 ٦ شهور٣٠٠٠ج
@@ -170,6 +170,29 @@ function flip(c, change) {
     c.style.transformOrigin = "";
   }, 650);
 }
+const mob = matchMedia("(max-width:900px)");
+function focusCard(c, open) {
+  // after the layout settles, scroll to the prices (phones) / center the card (desktop)
+  if (!mob.matches) {
+    c.scrollIntoView({ block: "center", behavior: "smooth" });
+    return;
+  }
+  setTimeout(
+    () => {
+      const t = open
+        ? c.querySelector(".dh")
+        : document.getElementById("pricing");
+      scrollTo({
+        top: Math.max(
+          0,
+          t.getBoundingClientRect().top + scrollY - (open ? 110 : 80),
+        ),
+        behavior: "smooth",
+      });
+    },
+    rm.matches ? 0 : 680,
+  );
+}
 function pick(id) {
   if (pg.classList.contains("foc")) return;
   const c = pg.querySelector(`[data-id=${id}]`),
@@ -197,7 +220,7 @@ function pick(id) {
         c.classList.add("ex");
       });
       refresh();
-      c.scrollIntoView({ block: "center", behavior: "smooth" });
+      focusCard(c, true);
     },
     rm.matches ? 0 : 420,
   );
@@ -230,7 +253,7 @@ function back() {
     700,
   );
   refresh();
-  c.scrollIntoView({ block: "center", behavior: "smooth" });
+  focusCard(c, false);
 }
 document.addEventListener("click", (e) => {
   const t = e.target;
