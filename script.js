@@ -221,8 +221,13 @@ $("#svc").innerHTML = SV_.map(
   (s) =>
     `<div class="card rv"><div class="ic">${s[0]}</div><h3 ${E(s[1], s[2])}></h3><p ${E(s[3], s[4])}></p></div>`,
 ).join("");
+
+// في script.js: استبدل تعريف CC القديم كله بالكود ده
+const tp = (img, en, ar, k) =>
+  `<div class="ph lb" data-ph="${en}">${img ? `<img src="${img}" alt="${en}" loading="lazy">` : "Photo"}<em class="tg ${k}" ${E(ar, en)}></em></div>`;
 const CC = (c) =>
-  `<div class="card rv"><div class="ba">${ph(c.before, "Before")}${ph(c.after, "After")}</div><div class="meta"><b ${E(c.name[0], c.name[1])}></b><br><span ${E(c.goal[0], c.goal[1])}></span> · <span ${E(c.dur[0], c.dur[1])}></span></div></div>`;
+  `<div class="card rv"><div class="ba">${tp(c.before, "Before", "قبل", "bf")}${tp(c.after, "After", "بعد", "af")}</div><div class="meta"><b ${E(c.name[0], c.name[1])}></b><br><span ${E(c.dur[0], c.dur[1])}></span></div></div>`;
+
 $("#cl").innerHTML = CFG.clients.slice(0, 3).map(CC).join(""); // home page shows first 3
 let shown = 0;
 const PER = 9; // transformations page: 9 per "Load More"

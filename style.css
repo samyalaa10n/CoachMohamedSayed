@@ -395,7 +395,7 @@
      opacity      : .28;
      background   : var(--ac);
      will-change  : transform;
-    
+
  }
 
  .bl:nth-child(2) {
@@ -1307,4 +1307,45 @@
      .pr.ex {
          padding: 24px 18px
      }
+ }
+
+ /* في آخر style.css */
+ .ph {
+     position: relative
+ }
+
+ .tg {
+     position          : absolute;
+     top               : 8px;
+     inset-inline-start: 8px;
+     z-index           : 2;
+     font-style        : normal;
+     font-weight       : 800;
+     font-size         : .72rem;
+     letter-spacing    : .08em;
+     text-transform    : uppercase;
+     padding           : 3px 10px;
+     border-radius     : 6px;
+     color             : #fff;
+     pointer-events    : none;
+     box-shadow        : 0 2px 10px rgba(0, 0, 0, .4)
+ }
+
+ /* استبدل قاعدتي .tg.bf و .tg.af بالكود ده */
+ .tg {
+     background     : rgba(10, 10, 11, .72);
+     backdrop-filter: blur(6px);
+     border         : 1px solid var(--ln);
+     box-shadow     : none;
+     color          : var(--tx)
+ }
+
+ .tg.bf {
+     color: var(--mut)
+ }
+
+ .tg.af {
+     background  : rgba(255, 77, 28, .88);
+     border-color: rgba(255, 77, 28, .9);
+     color       : #fff
  }
