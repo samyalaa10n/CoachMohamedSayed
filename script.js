@@ -56,7 +56,7 @@ const CFG = {
   ],
   certs: [
     {
-      img: "",
+      img: "images/Certifications/Gold.jpeg",
       ar: "شهادة التدريب من Gold’s Academy",
       en: "Gold’s Academy Training Certification",
       da: "شهادة معتمدة في التدريب.",
@@ -70,7 +70,7 @@ const CFG = {
       de: "Certified Personal Trainer (CPT) from ISSA.",
     },
     {
-      img: "",
+      img: "images/Certifications/Life Style.jpeg",
       ar: "شهادة CPR",
       en: "CPR Certification",
       da: "شهادة الإنعاش القلبي الرئوي.",
@@ -104,30 +104,30 @@ const CFG = {
   clients: [
     // add real entries: {name,goal,duration,before:"img",after:"img"} (ar/en text per field)
     {
-      name: ["محمد", "mohamed"],
-      goal: ["الهدف", "Goal"],
-      dur: ["3 شهور", "3 Month"],
+      name: ["", ""],
+      goal: ["", ""],
+      dur: ["", ""],
       before: "images/Clints/C_1_1.jpeg",
       after: "images/Clints/C_1_2.jpeg",
     },
     {
-      name: ["اسلام", "islam"],
-      goal: ["الهدف", "Goal"],
-      dur: ["3 شهور", "3 Month"],
+      name: ["", ""],
+      goal: ["", ""],
+      dur: ["", ""],
       before: "images/Clints/C_2_1.jpg",
       after: "images/Clints/C_2_2.jpg",
     },
     {
-      name: ["احمد", "ahmed"],
-      goal: ["الهدف", "Goal"],
-      dur: ["مدة التدريب", "Training Duration"],
+      name: ["", ""],
+      goal: ["", ""],
+      dur: ["", ""],
       before: "images/Clints/C_3_1.jpg",
       after: "images/Clints/C_3_2.jpg",
     },
     {
-      name: ["منصور", "mansor"],
-      goal: ["الهدف", "Goal"],
-      dur: ["مدة التدريب", "Training Duration"],
+      name: ["", ""],
+      goal: ["", ""],
+      dur: ["", ""],
       before: "images/Clints/C_4_1.jpg",
       after: "images/Clints/C_4_2.jpg",
     },
